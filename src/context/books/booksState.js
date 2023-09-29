@@ -26,9 +26,9 @@ const BooksState = (props) => {
     const getAllBooksUser = async (email) => {
         try {
             const url = await axios.get(`api/users`)
-            console.log(url)
+            
             const respuesta = await url.data.user
-            console.log(respuesta.length)
+           
             dispatch({
                 type: 'GET_BOOKS_USER',
                 payload: respuesta,email

@@ -6,7 +6,7 @@ import styles from '@/styles/dashboard/index.module.css'
 import BooksContext from '../context/books/booksContext';
 import { Card } from "@nextui-org/react";
 
-import { supabase } from './api/auth/[...auth]';
+import supabase from './api/auth/[...auth]';
 import UserContext from '../context/login/userContext';
 import FrameHome from '../components/frame/FrameHome';
 import BestUser from '../components/tables/BestUser';
@@ -29,7 +29,7 @@ const index = () => {
             if (error) {
                 console.error("Error fetching books:", error);
             } else {
-                console.log(data)
+                
                 setBooks(data);
                 setLoading(false)
             }

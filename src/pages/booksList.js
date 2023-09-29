@@ -3,7 +3,7 @@ import Layouts from '../components/Layouts'
 import styles from '@/styles/registerStudents.module.css'
 import Frame from '../components/frame/Frame'
 import TablesBooks from '../components/tables/TablesBooks'
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import TablesBooksUsers from '../components/tables/TablesBooksUser'
 import UserContext from '../context/login/userContext'
 

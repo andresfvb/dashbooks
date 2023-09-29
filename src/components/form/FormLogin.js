@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import { Input } from "@nextui-org/react";
 import { EyeFilledIcon } from '@/public/image/EyeFilledIcon';
 import { EyeSlashFilledIcon } from '@/public/image/EyeSlashFilledIcon';
@@ -28,8 +28,8 @@ const FormLogin = ({setRegistro, registro, router}) => {
         setError(error.message);
       } else {
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
-        console.log()
-        console.log(data.session.access_token)
+        
+      
         Cookies.set('supabaseSession', data.session.access_token);        
         console.log('Inicio de sesión exitoso', email);
         router.push('/')
@@ -50,7 +50,7 @@ const FormLogin = ({setRegistro, registro, router}) => {
         email,
         password,
       });
-      console.log(resultado)
+  
       if (resultado.error) {
         setError(resultado.error.message);
       } else {

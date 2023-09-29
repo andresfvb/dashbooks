@@ -8,7 +8,7 @@ const SideBar = ({rol}) => {
     useEffect(()=>{
         getDatos()
     },[])
-    console.log(dataUser)
+
     return (
         <aside className='flex gap-4 flex-wrap w-1/2 max-w-md h-screen'>
             <Card className='w-full' radius="none">

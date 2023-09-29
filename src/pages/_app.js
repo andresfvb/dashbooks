@@ -6,7 +6,7 @@ import '@/styles/globals.css'
 import SideBar from '../components/sidebar/SideBar';
 import BooksState from '../context/books/booksState';
 import { useRouter } from 'next/router';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import Cookies from 'js-cookie';
 import UserContext from '../context/login/userContext';
 import UserState from '../context/login/userState';

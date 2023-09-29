@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Card,Button, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react"
 import Cookies from 'js-cookie'
-import { supabase } from '@/src/pages/api/auth/[...auth]'
+import supabase from '@/src/pages/api/auth/[...auth]'
 import UserContext from '@/src/context/login/userContext'
 import { operation } from '@/src/functions/fechaActual'
 

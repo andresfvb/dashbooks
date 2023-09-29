@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import BooksUse from '../components/tables/BooksUse'
 import Layouts from '../components/Layouts'
 import Frame from '../components/frame/Frame'
-import { supabase } from './api/auth/[...auth]'
+import supabase from './api/auth/[...auth]'
 const Books = ({rolLog}) => {
 
     return (

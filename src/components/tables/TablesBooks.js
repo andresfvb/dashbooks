@@ -3,7 +3,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, 
 import BooksContext from '@/src/context/books/booksContext';
 import { EditIcon } from '@/public/image/Editcon';
 import { DeleteIcon } from '@/public/image/DeleteIcon';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import { EyeIcon } from '@/public/image/EyeIcon';
 import ReactLoading from 'react-loading';
 
@@ -19,7 +19,7 @@ const TablesBooks = ({ setCarga, onOpen, setEdicion, carga }) => {
 
             try {
               // Reemplaza "mi_tabla" con el nombre de tu tabla y "id" con el ID del registro que deseas eliminar.
-              console.log(item)
+         
               const { data, error } = await supabase
                 .from("books")
                 .delete()
@@ -129,7 +129,7 @@ const TablesBooks = ({ setCarga, onOpen, setEdicion, carga }) => {
         async function fetchBooks(){
             const {data, error} =  await supabase.from('books').select('*');
             
-            console.log(data)
+          
             if (error) {
                 console.error("Error fetching books:", error);
             } else {

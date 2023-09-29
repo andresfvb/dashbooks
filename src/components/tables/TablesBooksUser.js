@@ -3,7 +3,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, 
 import BooksContext from '@/src/context/books/booksContext';
 import { EditIcon } from '@/public/image/Editcon';
 import { DeleteIcon } from '@/public/image/DeleteIcon';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import { EyeIcon } from '@/public/image/EyeIcon';
 import styles from '@/styles/tablesBooksUser.module.css'
 import ReactLoading from 'react-loading';

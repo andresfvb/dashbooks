@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Link from 'next/link'
 import styles from '@/styles/sidebar/itemsMenu.module.css'
 import { useRouter } from 'next/router';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import Cookies from 'js-cookie';
 import { Button } from '@nextui-org/react';
 import UserContext from '@/src/context/login/userContext';

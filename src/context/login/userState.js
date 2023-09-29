@@ -2,7 +2,7 @@ import { useEffect, useReducer } from 'react'
 import userReducer from './userReducer'
 import axios from 'axios'
 import UserContext from './userContext'
-import { supabase } from '@/src/pages/api/auth/[...auth]'
+import  supabase  from '@/src/pages/api/auth/[...auth]'
 
 
 const UserState = (props) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Input } from "@nextui-org/react";
 import { Popover, PopoverTrigger, PopoverContent, Button, books } from "@nextui-org/react";
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 
 const FormRegister = ({ setCarga, onClose, edicion, setEdicion, method, id, carga }) => {
     

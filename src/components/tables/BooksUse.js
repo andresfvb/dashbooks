@@ -3,7 +3,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, 
 import BooksContext from '@/src/context/books/booksContext';
 import { EditIcon } from '@/public/image/Editcon';
 import { DeleteIcon } from '@/public/image/DeleteIcon';
-import { supabase } from '@/src/pages/api/auth/[...auth]';
+import supabase from '@/src/pages/api/auth/[...auth]';
 import { EyeIcon } from '@/public/image/EyeIcon';
 import Cookies from 'js-cookie';
 import ReactLoading from 'react-loading';
@@ -161,7 +161,7 @@ const BooksUse = ({ onOpen, setEdicion, carga, setCarga }) => {
     if (loading) {
         return (<div className='flex w-full items-center justify-center'><ReactLoading type={"spin"} color={"#002D61"} height={"100%"} width={"8%"} /></div>)
     }
-    console.log(books)
+   
     books.forEach((element, index) => {
         rows.push({ id: index+1, cod: element.book_id, name: element.nameBook, avatar: element.avatar, fechaIn: element.borrow_date, fechaOut: element.return_date})
     })
