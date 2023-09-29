@@ -3,7 +3,9 @@ module.exports = {
       unoptimized: true,
     },
     distDir: 'out',
-    target: 'experimental-serverless-trace',
-  // Exporta tu aplicación como HTML estático
-  output: 'export',
+    future: {
+        webpack5: true,
+      },
+      // Exporta tu aplicación como HTML estático
+      output: 'export',
   };
