@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import styles from '@/styles/frame/frame.module.css'
 import { Card, CardHeader, CardBody, CardFooter, Divider, Link, Image } from "@nextui-org/react"
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-import FormRegister from '../form/formRegister';
+import FormRegister from '../form/FormRegister';
 import BooksContext from '@/src/context/books/booksContext';
 import { nanoid } from 'nanoid'
 import UseBook from '../form/UseBook';
