@@ -7,7 +7,7 @@ import Cookies from 'js-cookie';
 import { Button } from '@nextui-org/react';
 import UserContext from '@/src/context/login/userContext';
 
-const ItemsMenu = () => {
+const ItemsMenuMobile = () => {
     const router = useRouter();
     const { dataUser } = useContext(UserContext)
     const [st, setSt] = useState('')
@@ -34,7 +34,7 @@ const ItemsMenu = () => {
 
 
     return (
-        <div className={`flex flex-col gap-5 ${styles.itemsMenu}`}>
+        <div className={`flex flex-col gap-5 ${styles.itemsMenu} `}>
             {
                 paginas.map(elemento => (
                     <Link href={elemento.path} key={elemento.id} ><div className={`rounded py-5 pl-5 ${router.pathname === elemento.path ? 'bg-primary-100' : ' hover:bg-default-100 bg-transparent'}`}>{elemento.name}</div></Link>
@@ -53,4 +53,4 @@ const ItemsMenu = () => {
     )
 }
 
-export default ItemsMenu
+export default ItemsMenuMobile

@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBody, CardFooter } from "@nextui-org/react";
 import UserContext from '@/src/context/login/userContext';
 
 const CountBooks = ({ datos }) => {
-    const {dataUser} = useContext(UserContext)
+    const { dataUser } = useContext(UserContext)
     return (
         <>
             {

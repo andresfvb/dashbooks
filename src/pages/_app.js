@@ -11,42 +11,46 @@ import Cookies from 'js-cookie';
 import UserContext from '../context/login/userContext';
 import UserState from '../context/login/userState';
 import ReactLoading from 'react-loading';
+import Header from '../components/Header';
 
 const MyApp = ({ Component, pageProps }) => {
     const router = useRouter();
     const [authInitialized, setAuthInitialized] = useState(false);
     const [loading, setLoading] = useState(true);
-    
+
     useEffect(() => {
         const sessionToken = Cookies.get('supabaseSession');
         if (!sessionToken) {
-          router.push('/login');
-         
+            router.push('/login');
+
             // supabase.auth.api.setAuth(sessionToken);
-        }else{
-            
+        } else {
+
         }
-      }, [authInitialized]);
-    
-    
+    }, [authInitialized]);
+
+
     return (
         <NextUIProvider>
             <UserState>
-            <BooksState>
-                
-                {
-                    router.pathname !== '/login' ? (
-                        <div className="flex">
-                            <SideBar/>
-                            <Component {...pageProps}/>
-                        </div>
-                    ) : (
-                        <Component {...pageProps} />
-                    )
-                }
+                <BooksState>
+
+                    {
+                        router.pathname !== '/login' ? (
+                            <div className="flex flex-col">
+                                <Header />
+                                <div className='flex'>
+                                    <SideBar />
+                                    <Component {...pageProps} />
+                                </div>
+                            </div>
+                        ) : (
+                            <Component {...pageProps} />
+                        )
+                    }
 
 
-            </BooksState>
+                </BooksState>
             </UserState>
         </NextUIProvider>
     )
