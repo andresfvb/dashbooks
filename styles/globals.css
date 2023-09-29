@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #88e23b;
+    --black: #262626;
+    --white: #FFF;
+    --fuente-principal: 'Poppins', sans-serif;
+    --bgpj: #272B33;
+    --bgcard: #3C3E44;
+    --fondo: #F1F5F9;
+    --box-shadow: 0px 0px 1px rgba(40, 41, 61, .08), 0px 0.5px 2px rgba(96, 97, 112, .16);
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: var(--fuente-principal);
+    line-height: 1.5;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+
+}
+
+.content-container {
+    width: 100%;
+    background-color: var(--fondo);
+    padding: 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto
+}
+
+[class*="contenedor"] {
+    width: min(95%, 120rem);
+    margin: 3rem auto 0 auto;
+}
+
+[class*="heading"] {
+    font-size: 2rem;
+    text-align: left;
+    font-weight: 900;
+    color: var(--black);
+    margin: 0 auto;
+    padding: 0rem;
+}

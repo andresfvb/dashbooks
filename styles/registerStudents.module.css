@@ -1,0 +1,9 @@
+.containerRegister {
+    display: flex;
+    gap: 3rem
+}
+
+.containerRegister>div {
+    width: 100%;
+    display: flex;
+}

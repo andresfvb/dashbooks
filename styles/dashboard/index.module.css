@@ -1,0 +1,37 @@
+.sectionFirst {
+    display: flex;
+    gap: 3rem;
+}
+
+.sectionFirst .information {
+    width: 45rem;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(141deg, rgba(0, 0, 0, 1) 0%, rgba(15, 15, 15, 0.8785889355742297) 37%, rgba(255, 255, 255, 1) 100%);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 14px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.sectionFirst .information h4 {
+    margin: 5px 0px;
+    width: 100%;
+}
+
+.sectionFirst .information p {
+    margin: 0px;
+}
+
+.countSection {
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8px;
+    width: 100%;
+
+}

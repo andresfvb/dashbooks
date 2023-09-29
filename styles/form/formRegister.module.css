@@ -1,0 +1,38 @@
+.formRegister>div {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.formRegister label {
+    font-size: 1.7rem;
+    opacity: 0.8;
+
+}
+
+.formRegister input {
+    border: 1px solid #E2E8F0;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.formRegister input:hover {
+    border: 1px solid #c1c5cb;
+}
+
+.formRegister input[type="submit"] {
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 10px 50px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    position: relative;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+.formRegister input[type="submit"]:hover {
+    background-color: #000;
+    color: #fff;
+    transition-duration: 0.3s;
+}

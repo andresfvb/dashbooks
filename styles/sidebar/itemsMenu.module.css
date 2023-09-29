@@ -1,0 +1,15 @@
+.itemsMenu .items a {
+    color: #393939;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+
+.itemsMenu .items a:hover {
+    color: #000;
+}
+
+.active {
+    background-color: #ECEFF3;
+    transition-property: background-color;
+    transition-duration: 0.4s;
+}
