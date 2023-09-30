@@ -38,7 +38,7 @@ const MyApp = ({ Component, pageProps }) => {
                     {
                         router.pathname !== '/login' ? (
                             <div className="flex flex-col">
-                                <Header />
+                            <Header/>
                                 <div className='flex'>
                                     <SideBar />
                                     <Component {...pageProps} />

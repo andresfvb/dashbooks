@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react';
 import supabase from '@/src/pages/api/auth/[...auth]';
 import { Input } from "@nextui-org/react";
@@ -7,13 +7,16 @@ import { EyeSlashFilledIcon } from '@/public/image/EyeSlashFilledIcon';
 import { Button } from "@nextui-org/react";
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+
 const FormLogin = ({setRegistro, registro, router}) => {
     const [isVisible, setIsVisible] = useState(false);
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); 
+ 
   
-
+  const [isSuccessMessageVisible, setSuccessMessageVisible] = useState(false);
+  const [isRegisterMessageVisible, setRegisterMessageVisible] = useState(false);
   const handleLogin = async (e) => {
     e.preventDefault();
     setError(null);
@@ -28,8 +31,12 @@ const FormLogin = ({setRegistro, registro, router}) => {
         setError(error.message);
       } else {
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
-        
-      
+  
+          setSuccessMessageVisible(true); // Mostrar el mensaje de éxito
+          setTimeout(() => {
+            setSuccessMessageVisible(false); // Ocultar el mensaje después de unos segundos
+          }, 5000); // Ocultar después de 5 segundos (ajusta el tiempo según tus preferencias)
+
         Cookies.set('supabaseSession', data.session.access_token);        
         console.log('Inicio de sesión exitoso', email);
         router.push('/')
@@ -55,7 +62,10 @@ const FormLogin = ({setRegistro, registro, router}) => {
         setError(resultado.error.message);
       } else {
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
-        console.log('Registro exitoso', email);
+        setSuccessMessageVisible(true); // Mostrar el mensaje de éxito
+          setTimeout(() => {
+            setSuccessMessageVisible(false); // Ocultar el mensaje después de unos segundos
+          }, 5000);
         // router.push('/')
       }
     } catch (error) {
@@ -73,7 +83,7 @@ const FormLogin = ({setRegistro, registro, router}) => {
                                         variant="bordered"
                                         placeholder=""
                                         onClear={() => console.log("input cleared")}
-                                        className="max-w-xs text-black"
+                                        className="w-full text-black"
                                         onChange={(e) => setEmail(e.target.value)}
                                         value={email}
                                     />
@@ -92,11 +102,24 @@ const FormLogin = ({setRegistro, registro, router}) => {
                                             </button>
                                         }
                                         type={isVisible ? "text" : "password"}
-                                        className="max-w-xs text-black"
+                                        className="w-full text-black"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                     />
                                 </div>
+                               {isSuccessMessageVisible && (
+        <div className="success-message bg-green-300 rounded-md">
+          ¡Inicio de sesión exitoso!
+          <button onClick={() => setSuccessMessageVisible(false)}>Cerrar</button>
+        </div>
+      )}
+      {isRegisterMessageVisible && (
+        <div className="success-message text-white p-3 bg-green-300 rounded-md">
+          <p>¡Registro exitoso!</p>
+          <p>Se ha enviado un link a su correo electronico</p>
+          <button onClick={() => setRegisterMessageVisible(false)}>Cerrar</button>
+        </div>
+      )}
                                 <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
                                     {registro?
                                     (
@@ -105,10 +128,12 @@ const FormLogin = ({setRegistro, registro, router}) => {
                                             <p className='text-black' onClick={()=>setRegistro(true)}>Registrarse</p>
                                     )}
                                 </div>
-
-                                <Button type="submit" color="primary">
+<div className='flex w-full justify-center items-center'>
+<Button type="submit" color="primary" className='w-1/2'>
                                     {registro? "Registrar" : "Iniciar"}
                                 </Button>
+</div>
+                                
                             </form>
   )
 }

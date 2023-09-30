@@ -66,12 +66,12 @@ const index = () => {
 
                 <h1 className='text-large mb-2'>DashBoard</h1>
                 <div className='flex flex-col gap-10'>
-                <div className={styles.sectionFirst}>
+                <div className={`${styles.sectionFirst} sm:flex-col`}>
                     <div className={styles.information}>
                         <h4 className='text-small'>Recien llegado</h4>
                         <p className='text-medium'>{books[books.length-1].title}</p>
                     </div>
-                    <div className="grid grid-cols-3 w-full gap-10 bg-transparent">
+                    <div className="lg:grid lg:grid-cols-3 sm:flex sm:flex-col w-full gap-10 bg-transparent">
                         <CountBooks
                             datos={datos}
                         />

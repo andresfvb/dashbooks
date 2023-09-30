@@ -6,6 +6,5 @@ module.exports = {
     future: {
         webpack5: true,
       },
-      // Exporta tu aplicación como HTML estático
-      output: 'export',
+
   };

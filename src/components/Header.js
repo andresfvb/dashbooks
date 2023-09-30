@@ -14,10 +14,10 @@ const Header = ({ rol }) => {
     useEffect(() => {
         getDatos()
     }, [])
-
+    console.log(dataUser)
     return (
-        <div className='z-40 fixed top-0 left-0 right-0'>
-            <div className='w-full flex flex-row lg:hidden justify-between items-center bg-black' radius="none">
+        <div className={`z-40 fixed top-0 left-0 right-0 lg:hidden md:flex sm:flex`}>
+            <div className='w-full flex flex-row justify-between items-center bg-black' radius="none">
                 <div className="lg:hidden">
                     <button
                         onClick={toggleMenu}
@@ -58,7 +58,7 @@ const Header = ({ rol }) => {
             </div>
             <hr className='text-white' />
             <div className={`lg:hidden ${isOpen ? 'block' : 'hidden'} h-screen w-screen z-40 mt-4 lg:mt-0 absolute top-36 backdrop-blur-sm bg-black/30`}>
-                <div className={` bg-neutral-900 w-1/3 h-screen`}>
+                <div className={` bg-neutral-900 w-1/3 h-screen pt-5`}>
                     <Menu Pagina={ItemsMenuMobile} />
                 </div>
             </div>

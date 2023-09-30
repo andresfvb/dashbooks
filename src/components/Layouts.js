@@ -11,7 +11,7 @@ const Layouts = ({ children, title = '', description = '' }) => {
             </Head>
             {
                 router.pathname !== '/login' ? (
-                    <div key="1" className="flex flex-col py-14 px-24 w-full">
+                    <div key="1" className="flex flex-col py-14 px-24 w-full lg:mt-0  mt-40">
                         {children}
                     </div>
                 ) : (

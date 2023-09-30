@@ -9,7 +9,7 @@ const CountBooks = ({ datos }) => {
         <>
             {
                 datos.map((elemento) => (
-                    <Card key={elemento.id} className={`flex flex-col ${elemento.color}`}>
+                    <Card key={elemento.id} className={`flex flex-col w-full ${elemento.color}`}>
                         <CardHeader>
                             <h3 className='text-default-900'>{elemento.name}</h3>
                         </CardHeader>
