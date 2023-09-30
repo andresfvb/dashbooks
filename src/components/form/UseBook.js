@@ -29,7 +29,7 @@ const UseBook = ({carga, onClose, setCarga}) => {
               } else {
                 console.log("Datos insertados exitosamente:", data);
                 actualizarRegistro(carga.cod)
-                setCarga({ name: '',  author: '', cod: '', id: '', avatar:'' })
+                
               }
               
         
@@ -46,6 +46,7 @@ const UseBook = ({carga, onClose, setCarga}) => {
             console.error("Error al actualizar el registro:", error.message);
           } else {
             console.log("Registro actualizado con éxito:", data);
+            setCarga({ name: '',  author: '', cod: '', id: '', avatar:'' })
           }
         } catch (error) {
           console.error("Error inesperado:", error.message);
