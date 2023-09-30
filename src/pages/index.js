@@ -19,28 +19,40 @@ const index = () => {
     const [loading, setLoading] = useState(true);
     const [books, setBooks] = useState([]);
     const [booksOcu, setBooksOcu] = useState([]);
+    const [cargar, setCargar] = useState({ name: '', genero: '', author: '', cod: '', id: '',avatar: '' })
     let datos = []
     useEffect(()=>{
-        getDatos()
+        fetchBooks()
+        fetchBooksAdmin()
     },[])
-    useEffect(()=>{
+
+    async function fetchBooksAdmin(){
+        const {data, error} =  await supabase.from('books').select('*')
+        if (error) {
+            console.error("Error fetching books:", error);
+        } else {
+            setCargar({ name: 's', genero: '', author: '', cod: '', id: '',avatar: '' })
+            setBooks(data);
+            setLoading(false)
+        }
+    }
+
         async function fetchBooks(){
             const {data, error} =  await supabase.from('loans').select('*').eq("user_id", dataUser.id);
             if (error) {
                 console.error("Error fetching books:", error);
             } else {
-                
-                setBooks(data);
+                setCargar({ name: 's', genero: '', author: '', cod: '', id: '',avatar: '' })
+                setBooksOcu(data);
                 setLoading(false)
             }
         }
-        fetchBooks()
-    },[])
+        
+ 
     
     if (loading) {
         return (<div className='flex w-full items-center justify-center'><ReactLoading type={"spin"} color={"#002D61"} height={"100%"} width={"8%"} /></div>)
     }
-    console.log(books)
     const disponiblez = books.filter((element, index) => element.available === true)
     const ocupado = books.filter((element, index) => element.available === false)
 
@@ -70,7 +82,14 @@ const index = () => {
                         <div className={`${styles.sectionFirst} sm:flex-col lg:flex-col`}>
                     <div className={styles.information} >
                         <h4 className='text-small'>Recien llegado</h4>
-                        <p className='text-medium'>{books[books.length-1].title}</p>
+                        {
+                            dataUser.role === 'Usuario'?(
+                                <p className='text-medium'>{books[books.length-1].title}</p>
+                            ):(
+                                <p className='text-medium'>{books[books.length-1].title}</p>
+                            )
+                        }
+                        
                     </div>
                     <div className="lg:grid lg:grid-cols-3 sm:flex sm:flex-col w-full gap-10 bg-transparent">
                         <CountBooks
