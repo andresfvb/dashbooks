@@ -31,7 +31,7 @@ const FormLogin = ({setRegistro, registro, router}) => {
         setError(error.message);
       } else {
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
-  
+        setRegisterMessageVisible(false)
           setSuccessMessageVisible(true); // Mostrar el mensaje de éxito
           setTimeout(() => {
             setSuccessMessageVisible(false); // Ocultar el mensaje después de unos segundos
@@ -61,6 +61,7 @@ const FormLogin = ({setRegistro, registro, router}) => {
       if (resultado.error) {
         setError(resultado.error.message);
       } else {
+        setSuccessMessageVisible(false)
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
         setRegisterMessageVisible(true); // Mostrar el mensaje de éxito
           setTimeout(() => {
