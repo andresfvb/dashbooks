@@ -22,7 +22,7 @@ const Login = () => {
                 title={'Login'}
                 description={'Inicio sesion'}
             >
-                <Card className='bg-white w-1/2 p-10'>
+                <Card className='bg-white lg:w-1/2 sm:w-full m-5 p-10'>
                     <CardHeader className="flex gap-3">
                             <Image src="/image/Logo-db.png" width={50} height={50} alt="Logotipo" radius="sm" />
                             <div className="flex flex-col">
