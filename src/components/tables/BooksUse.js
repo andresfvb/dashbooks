@@ -8,11 +8,14 @@ import { EyeIcon } from '@/public/image/EyeIcon';
 import Cookies from 'js-cookie';
 import ReactLoading from 'react-loading';
 import UserContext from '@/src/context/login/userContext';
+import { operation } from '@/src/functions/fechaActual';
 
 const BooksUse = ({ onOpen, setEdicion, carga, setCarga }) => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
     const {dataUser} = useContext(UserContext)
+    const op = new operation
+        const fecha  = op.sacarFecha()
     async function entregar(item) {
         try {
           // Reemplaza "mi_tabla" con el nombre de tu tabla y "id" con el ID del registro que deseas actualizar.
@@ -20,11 +23,17 @@ const BooksUse = ({ onOpen, setEdicion, carga, setCarga }) => {
             .from("books")
             .update({available:true})
             .eq("id", item.cod);
+            
+        const { value, error2 } = await supabase
+            .from("loans")
+            .update({return_date:fecha})
+            .eq("book_id", item.cod);
       
           if (error) {
             console.error("Error al actualizar el registro:", error.message);
           } else {
             console.log("Registro actualizado con éxito:", data);
+            setCarga({ name: '', editorial: '', author: '', cod: '', id: '', avatar:'' })
           }
         } catch (error) {
           console.error("Error inesperado:", error.message);
@@ -81,7 +90,10 @@ const BooksUse = ({ onOpen, setEdicion, carga, setCarga }) => {
                 return (
                     <div className="flex flex-col">
                         <p className="capitalize" >
-                            {cellValue}
+                            {
+                                user.fechaIn>cellValue? "---":cellValue
+                            }
+                            
                         </p>
                     </div>
                 );
@@ -89,7 +101,10 @@ const BooksUse = ({ onOpen, setEdicion, carga, setCarga }) => {
                 return (
                     <div className="flex flex-col">
                         <p className="capitalize" >
-                            <Button color="success" variant="ghost" onClick={()=>entregar(user)}>Entregar</Button>
+                        {
+                            user.fechaIn>user.fechaOut?<Button color="success" variant="ghost" onClick={()=>entregar(user)}>Entregar</Button>:<Button color="success" variant="ghost" onClick={()=>entregar(user)} isDisabled>Entregado</Button>
+                        }
+                            
                         </p>
                     </div>
                 );

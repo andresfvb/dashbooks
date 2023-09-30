@@ -4,7 +4,7 @@
 }
 
 .sectionFirst .information {
-    width: 45rem;
+
     background: rgb(0, 0, 0);
     background: linear-gradient(141deg, rgba(0, 0, 0, 1) 0%, rgba(15, 15, 15, 0.8785889355742297) 37%, rgba(255, 255, 255, 1) 100%);
     color: #fff;

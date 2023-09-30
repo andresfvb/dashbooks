@@ -25,7 +25,7 @@ const index = () => {
     },[])
     useEffect(()=>{
         async function fetchBooks(){
-            const {data, error} =  await supabase.from('books').select('*');
+            const {data, error} =  await supabase.from('loans').select('*').eq("user_id", dataUser.id);
             if (error) {
                 console.error("Error fetching books:", error);
             } else {
@@ -41,20 +41,19 @@ const index = () => {
         return (<div className='flex w-full items-center justify-center'><ReactLoading type={"spin"} color={"#002D61"} height={"100%"} width={"8%"} /></div>)
     }
     console.log(books)
-    const disponible = books.filter((element, index) => {element.available === true})
-    const ocupado = books.filter((element, index) => {element.available === false})
+    const disponiblez = books.filter((element, index) => element.available === true)
+    const ocupado = books.filter((element, index) => element.available === false)
+
     const total = books.length
     if(dataUser.role === 'Usuario'){
         datos = [
             { id: 1, name: 'Libros prestados total', tamaño: books.length, color: 'bg-blue-500' },
-            { id: 2, name: 'Libros devueltos', tamaño: books.length, color: 'bg-green-500' },
-            { id: 3, name: 'Libros sin devolución', tamaño: books.length, color: 'bg-red-500' }
         ]
     }else{
         datos = [
             { id: 1, name: 'Libros totales', tamaño: total, color: 'bg-blue-500' },
-            { id: 2, name: 'Libros disponibles', tamaño: disponible, color: 'bg-green-500' },
-            { id: 3, name: 'Libros prestados', tamaño: ocupado, color: 'bg-red-500' }
+            { id: 2, name: 'Libros disponibles', tamaño: disponiblez.length, color: 'bg-green-500' },
+            { id: 3, name: 'Libros prestados', tamaño: ocupado.length, color: 'bg-red-500' }
         ]
     }
     return (
@@ -65,9 +64,11 @@ const index = () => {
             >
 
                 <h1 className='text-large mb-2'>DashBoard</h1>
-                <div className='flex flex-col gap-10'>
-                <div className={`${styles.sectionFirst} sm:flex-col`}>
-                    <div className={styles.information}>
+                <div className='flex flex-row justify-around items-center gap-10'>
+                {
+                    dataUser.role === 'Usuario'?(''):(
+                        <div className={`${styles.sectionFirst} sm:flex-col lg:flex-col`}>
+                    <div className={styles.information} >
                         <h4 className='text-small'>Recien llegado</h4>
                         <p className='text-medium'>{books[books.length-1].title}</p>
                     </div>
@@ -78,6 +79,9 @@ const index = () => {
                     </div>
                     
                 </div>
+                    )
+                }
+                
                 {
                     dataUser.role === 'Usuario'? (
                         <div className='flex flex-row justify-between gap-10 w-full'>
@@ -90,16 +94,16 @@ const index = () => {
                         </div>
                     ):(
                         <div className='flex flex-row justify-between gap-10'>
-                            <div className='flex w-1/2'>
+                            <div className='flex'>
                                     {
                                         dataUser.role !== "Usuario" ? <FrameHome TableBook={BestBook} vl={1}/>:''
                                     }
                             </div>
-                            <div className='flex w-1/2'>
+                            {/* <div className='flex w-1/2'>
                                     {
                                         dataUser.role !== "Usuario" ? <FrameHome TableBook={BestUser} vl={2}/>:''
                                     }
-                            </div>
+                            </div> */}
                         </div>
                     )
                 }
