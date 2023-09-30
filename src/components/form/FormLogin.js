@@ -62,9 +62,9 @@ const FormLogin = ({setRegistro, registro, router}) => {
         setError(resultado.error.message);
       } else {
         // El inicio de sesión fue exitoso, puedes redirigir al usuario a otra página.
-        setSuccessMessageVisible(true); // Mostrar el mensaje de éxito
+        setRegisterMessageVisible(true); // Mostrar el mensaje de éxito
           setTimeout(() => {
-            setSuccessMessageVisible(false); // Ocultar el mensaje después de unos segundos
+            setRegisterMessageVisible(false); // Ocultar el mensaje después de unos segundos
           }, 5000);
         // router.push('/')
       }
@@ -108,13 +108,13 @@ const FormLogin = ({setRegistro, registro, router}) => {
                                     />
                                 </div>
                                {isSuccessMessageVisible && (
-        <div className="success-message bg-green-300 rounded-md">
+        <div className="success-message bg-green-80 rounded-md">
           ¡Inicio de sesión exitoso!
           <button onClick={() => setSuccessMessageVisible(false)}>Cerrar</button>
         </div>
       )}
       {isRegisterMessageVisible && (
-        <div className="success-message text-white p-3 bg-green-300 rounded-md">
+        <div className="success-message text-white p-3 bg-green-800 rounded-md">
           <p>¡Registro exitoso!</p>
           <p>Se ha enviado un link a su correo electronico</p>
           <button onClick={() => setRegisterMessageVisible(false)}>Cerrar</button>
